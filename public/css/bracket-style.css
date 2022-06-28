@@ -1,0 +1,172 @@
+/*===========================*/
+/*==== Incl Pad & Bord ======*/
+/*===========================*/
+*{
+    box-sizing: border-box;
+}
+
+/*===========================*/
+/*====== Formtatting ========*/
+/*===========================*/
+.verdana-gray {
+    font-family: Verdana;
+    color: #8d8d8d;
+}
+
+/*===========================*/
+/*======= Background ========*/
+/*===========================*/
+.bg-gray {
+    background-color: #8d8d8d;
+}
+.bg-light-gray {
+    background-color: #e5e5e5;
+}
+.bg-white {
+    background-color: white;
+}
+.rounded {
+    border-radius: 8px;
+}
+
+/*===========================*/
+/*======== Wrappers =========*/
+/*===========================*/
+#wrapper-main-bracket {
+    display: flex;
+    flex-direction: column;
+
+    height: 100%;
+    
+    margin: 0;
+}
+#wrapper-header-bracket {
+    height: 120px;
+    line-height: 120px;
+
+    font-size: 24pt;
+}
+#wrapper-content-bracket {
+    display: flex;
+    flex: 1 0 auto;
+    flex-direction: column;
+}
+#wrapper-footer-bracket {
+    display: flex;
+    flex-shrink: 0;
+}
+
+
+/*===========================*/
+/*========= Content =========*/
+/*===========================*/
+#content {
+    display: flex;
+    flex-direction: row;
+    margin: 10px 0;
+}
+
+
+/*======= Left Pane =========*/
+#content-left-pane {
+    width: 15%;
+    padding: 10px;
+}
+#e-list {
+    overflow-wrap: anywhere;
+}
+.el-row {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    overflow-wrap: anywhere;
+    margin: 10px 0;
+}
+.el-name {
+    border-bottom: 2px solid #8d8d8d;
+    width: -webkit-fill-available;
+}
+.el-delete {
+    cursor: pointer;
+    width: 20px;
+    height: 20px;
+}
+
+/*========== Main ===========*/
+#content-main {
+    width: 85%;
+    margin-left: 10px;
+}
+
+/*========== Form ===========*/
+#form {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    vertical-align: middle;
+    padding: 10px;
+}
+#add-entry {
+    display: flex;
+    flex-direction: row;
+    width: 80%;
+}
+#e-name {
+    font-family: Verdana;
+    font-size: 10pt;
+    color: #636363;
+}
+
+
+/*======== Bracket ==========*/
+#bracket {
+    display: flex;
+    flex-direction: column;
+    align-content: flex-start;
+    padding: 10px;
+}
+.be-row {
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    height: 40px;
+    margin:  10px;
+}
+.be {
+    display: flex;
+    flex-direction: row;
+    align-content: space-between;
+    border: 2px solid #8d8d8d;
+    padding: 10px;
+    position: relative;
+}
+
+.be-name {
+    width: -webkit-fill-available;
+    text-align: center;
+}
+
+
+.be-row .bes::after {
+    align-items: center ;
+    content: '';
+    display: flex ;
+    justify-content: center ;
+    top: 20px;
+    right: -10%;
+    width: 10%;
+    height: 3px;
+    background-color: red;
+    position: absolute;
+}
+
+.be-row:last-child .bes::after {
+    display: none;
+}
+
+
+
+
+
+
+
