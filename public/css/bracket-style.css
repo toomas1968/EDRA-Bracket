@@ -72,19 +72,16 @@
     width: 15%;
     padding: 10px;
 }
-#e-list {
-    overflow-wrap: anywhere;
-}
+
 .el-row {
     display: flex;
     flex-direction: row;
     justify-content: space-between;
-    overflow-wrap: anywhere;
     margin: 10px 0;
 }
 .el-name {
     border-bottom: 2px solid #8d8d8d;
-    width: -webkit-fill-available;
+
 }
 .el-delete {
     cursor: pointer;
@@ -94,23 +91,14 @@
 
 /*========== Main ===========*/
 #content-main {
-    width: 85%;
-    margin-left: 10px;
+    width: 100%;
+    margin-left: 25px;
+    margin-top: 25px;
+
 }
 
 /*========== Form ===========*/
-#form {
-    display: flex;
-    flex-direction: row;
-    justify-content: space-between;
-    vertical-align: middle;
-    padding: 10px;
-}
-#add-entry {
-    display: flex;
-    flex-direction: row;
-    width: 80%;
-}
+
 #e-name {
     font-family: Verdana;
     font-size: 10pt;
@@ -142,31 +130,114 @@
 }
 
 .be-name {
-    width: -webkit-fill-available;
     text-align: center;
 }
 
 
-.be-row .bes::after {
+.be-row .be1::after {
     align-items: center ;
     content: '';
     display: flex ;
     justify-content: center ;
     top: 20px;
-    right: -10%;
-    width: 10%;
-    height: 3px;
-    background-color: red;
+    right: -13%;
+    width: 13%;
+    height: 5rem;
+    border-top: 1px solid red;
+    border-right: 1px solid red;
     position: absolute;
 }
 
-.be-row:last-child .bes::after {
-    display: none;
+.be-row .beSecondColumn::after {
+    align-items: center ;
+    content: '';
+    display: flex ;
+    justify-content: center ;
+    top: 20px;
+    right: -13%;
+    width: 13%;
+    height: 13rem;
+    border-top: 1px solid red;
+    border-right: 1px solid red;
+    position: absolute;
 }
 
+.be-row .beThirdColumn::after {
+    align-items: center ;
+    content: '';
+    display: flex ;
+    justify-content: center ;
+    top: 20px;
+    right: -13%;
+    width: 13%;
+    height: 28rem;
+    border-top: 1px solid red;
+    border-right: 1px solid red;
+    position: absolute;
+}
 
+.be-row .beForthColumn::after {
+    align-items: center ;
+    content: '';
+    display: flex ;
+    justify-content: center ;
+    top: 20px;
+    right: -13%;
+    width: 13%;
+    height: 58rem;
+    border-top: 1px solid red;
+    border-right: 1px solid red;
+    position: absolute;
+}
 
+.be-row .beFifthColumn::after {
+    align-items: center ;
+    content: '';
+    display: flex ;
+    justify-content: center ;
+    top: 20px;
+    right: -13%;
+    width: 13%;
+    height: 72vh;
+    border-top: 1px solid red;
+    border-right: 1px solid red;
+    position: absolute;
+}
 
+.be-row .be2::after {
+    align-items: center ;
+    content: '';
+    display: flex ;
+    justify-content: center ;
+    top: -20px;
+    right: -13%;
+    width: 13%;
+    height: 100%;
+    border-bottom: 1px solid red;
+    border-right: 1px solid red;
+    position: absolute;
+}
+
+.ber::after {
+    display: none!important;
+}
+
+.be-row .be::before {
+    align-items: center ;
+    content: '';
+    display: flex ;
+    justify-content: center ;
+    top: 20px;
+    right: 100%;
+    width: 13%;
+    height: 1px;
+    border-bottom: 1px solid red;
+    position: absolute;
+}
+
+.berr:before {
+    display: none!important;
+}
 
 
 

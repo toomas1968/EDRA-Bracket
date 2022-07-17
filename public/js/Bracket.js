@@ -34,6 +34,7 @@ class Bracket {
         let nearestP2 = 2**(Math.ceil(Math.log2(roundOneContestants.length)))
 
         this.Height = Array.apply(null, Array(2*nearestP2 - 1))
+        this.Depth = Math.log2(nearestP2) + 1;
 
         var r1 = nearestP2; 
         var r2 = r1 / 2; 
@@ -93,7 +94,7 @@ class Bracket {
             }
         }
 
-        this.Depth = Math.log2(nearestP2) + 1;
+        
         
         // make a filled list of Entries with BYEs
         //let prettyEntries = deepCopy(entries);
@@ -139,14 +140,12 @@ class Bracket {
 
             // BEE
             let bEE = document.createElement("div");
-            //bEE.id = ID_BE + prettyEntry.racer;
             bEE.className = CLASS_BE;
             bEE.style.width = 80 / this.Depth + "%";
 
             //      BEE NAME
             let bEENameElement = document.createElement("div");
             bEENameElement.className = CLASS_BE_NAME + " " + CLASS_VERDANA_GRAY;
-           // bEENameElement.innerText = prettyEntry.racer; 
             bEE.appendChild(bEENameElement);
             
 
@@ -156,6 +155,8 @@ class Bracket {
             _B_Element.appendChild(bEERowElement);
             _B_Row_Elements.push(bEERowElement);
         }
+
+
 
         // offset entries to make the bracket shape
         // Go through oddly indexed powers of two that are less than the length of PrettyEntries
@@ -167,23 +168,38 @@ class Bracket {
             for (let ei = i; ei < this.PrettyEntries.length; ei+=i) {
                 let spacerE = document.createElement("div");
                 spacerE.style.width = 100 / this.Depth + "%";                
-                
                 _B_Row_Elements[ei-1].prepend(spacerE);
             }
         }
 
+        const chunk = (arr, size) =>
+          Array.from({ length: Math.ceil(arr.length / size) }, (v, i) =>
+            arr.slice(i * size, i * size + size)
+          );
         // advance any entries that have BYEs first round. also adds advance arrows to entries
         // Check all even indexes if they are BYEs
         //for (let y = 0; y < this.roundOne.length; y++) {
-
+       
         let y = 0;    
+        let firstColumn = [];
+        let secondColumn = [];
+        let thirdColumn = [];
+        let forthColumn = [];
+        let fifthColumn = [];
+
         for (let i = 0; i < this.Height.length; i+=2) {
+            firstColumn.push(_B_Row_Elements[i])
+
+            _B_Row_Elements[i].lastChild.className = "be berr";
+
             for (y; y < this.roundOne.length; y++) { 
                 let winnerName = this.roundOne[y++].racer;
                 let winnerE = _B_Row_Elements[i].lastChild;
 
                 winnerE.id = ID_BE + winnerName;
                 winnerE.lastChild.style.visibility = "visible";
+
+
                 if (winnerName == undefined) {
                      winnerE.innerText = "BYE";
                      winnerE.style.backgroundColor = "#dddddd"
@@ -192,15 +208,32 @@ class Bracket {
                 }
                 break;
             }
+
         }
+
+        let chunkFirstColumn = chunk(firstColumn, 2);
+        for (var i = chunkFirstColumn.length - 1; i >= 0; i--) {
+            chunkFirstColumn[i][0].lastChild.className = "be berr be1";
+            if (chunkFirstColumn[i][1] === undefined) {
+                console.log("error")
+            } else {
+                chunkFirstColumn[i][1].lastChild.className = "be berr be2";
+            }
+
+        }
+
+
+
 
         let x = 0;
         for (let i = 1; i < this.Height.length; i+=4) {
+            secondColumn.push(_B_Row_Elements[i])
             for (x; x < this.roundTwo.length; x++) { 
                 let winnerName = this.roundTwo[x++].racer;
                 let winnerE = _B_Row_Elements[i].lastChild;
                 winnerE.id = ID_BE + winnerName;
                 winnerE.lastChild.style.visibility = "visible";
+
                 if (winnerName == undefined) {
                      winnerE.innerText = "BYE";
                      winnerE.style.backgroundColor = "#dddddd"
@@ -211,8 +244,20 @@ class Bracket {
             }
         }
 
+        let chunkSecondColumn = chunk(secondColumn, 2);
+        for (var i = chunkSecondColumn.length - 1; i >= 0; i--) {
+            chunkSecondColumn[i][0].lastChild.className = "be  beSecondColumn";
+
+            if (chunkSecondColumn[i][1] === undefined) {
+                console.log("error")
+            } else {
+                chunkSecondColumn[i][1].lastChild.className = "be be2";
+            }
+        }
+
         let q = 0;
         for (let i = 3; i < this.Height.length; i+=8) {
+            thirdColumn.push(_B_Row_Elements[i])
             for (q; q < this.roundThree.length; q++) { 
                 //console.log(this.roundOne[y++])
                 let winnerName = this.roundThree[q++].racer;
@@ -229,8 +274,22 @@ class Bracket {
             }
         }
 
+        let chunkThirdColumn = chunk(thirdColumn, 2);
+        for (var i = chunkThirdColumn.length - 1; i >= 0; i--) {
+            chunkThirdColumn[i][0].lastChild.className = "be  beThirdColumn";
+            
+            if ( chunkThirdColumn[i][1] === undefined) {
+                console.log("error")
+            } else {
+                chunkThirdColumn[i][1].lastChild.className = "be be2";
+            }
+
+        }
+
+
         let w = 0;
         for (let i = 7; i < this.Height.length; i+=16) {
+            forthColumn.push(_B_Row_Elements[i])
             for (w; w < this.roundFour.length; w++) { 
                 //console.log(this.roundOne[y++])
                 let winnerName = this.roundFour[w++].racer;
@@ -247,8 +306,21 @@ class Bracket {
             }
         }
 
+        let chunkForthColumn = chunk(forthColumn, 2);
+        for (var i = chunkForthColumn.length - 1; i >= 0; i--) {
+            chunkForthColumn[i][0].lastChild.className = "be  beForthColumn";
+            if (chunkForthColumn[i][1] === undefined) {
+                console.log("error")
+            } else {
+                chunkForthColumn[i][1].lastChild.className = "be be2";
+            }
+        }
+
+
+
         let r = 0;
         for (let i = 15; i < this.Height.length; i+=32) {
+            fifthColumn.push(_B_Row_Elements[i])
             for (r; r < this.roundFive.length; r++) { 
                 //console.log(this.roundOne[y++])
                 let winnerName = this.roundFive[r++].racer;
@@ -264,5 +336,20 @@ class Bracket {
                 break;
             }
         }
+
+        let chunkFifthColumn = chunk(fifthColumn, 2);
+        for (var i = chunkFifthColumn.length - 1; i >= 0; i--) {
+            chunkFifthColumn[i][0].lastChild.className = "be beFifthColumn";
+            
+            if ( chunkFifthColumn[i][1] === undefined) {
+                console.log("error")
+            } else {
+                chunkFifthColumn[i][1].lastChild.className = "be be2";
+            }
+        }
+
+        let arrayLength = this.Height.length + 1;
+        let removeItemClass = _B_Row_Elements[arrayLength / 2 - 1];
+        removeItemClass.lastChild.className = "be ber";
     }
 }

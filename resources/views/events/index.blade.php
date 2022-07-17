@@ -17,7 +17,7 @@
                     @foreach($events as $event)
                         <li class="px-6 py-2 border-b border-gray-200 w-full"> 
                             @if($event->isActive)
-                                <a style="color: green;" href="{{ route('events.classes', $event->eventID)}}">{{ $event->eventName }} </a>
+                                <a style="color: green;" href="{{ route('bracket.test', $event->eventID)}}">{{ $event->eventName }} </a>
                             @else
                                 <a href="{{ route('events.classes', $event->eventID)}}">{{ $event->eventName }} not active</a>
                             @endif

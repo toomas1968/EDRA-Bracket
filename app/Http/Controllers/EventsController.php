@@ -13,6 +13,10 @@ class EventsController extends Controller
     public function index() {
 
         $events = Events::orderBy('isActive', 'desc')->get();
+
+
+        //$event = Events::where('eventId', $eventId)->first();
+
         return view('events.index')->with('events', $events);
 
     }
@@ -31,7 +35,18 @@ class EventsController extends Controller
 
     }
 
-    public function bracket($eventID, $classID) {
-        return view('bracket.index')->with('eventID', $eventID)->with('classID', $classID);;
+
+    public function bracketTest($eventID) {
+        $event = Events::where('eventId', $eventID)->first();
+        $tournamentRacingResults = TournamentRacingResults::where('eventID', $eventID)->pluck('classID')->all();
+        $classID = Classes::whereIn('classId', $tournamentRacingResults)->first();
+        
+        return view('bracket.index')->with('eventID', $eventID)->with('classID', $classID->classID);
     }
+
+    public function bracket($eventID, $classID) {
+        return view('bracket.index')->with('eventID', $eventID)->with('classID', $classID);
+    }
+
+
 }

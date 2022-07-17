@@ -19,6 +19,7 @@ Route::get('/', function () {
 
 Route::get('/eliminators', [App\Http\Controllers\EventsController::class, 'index'])->name('eliminators');
 Route::get('/eliminators/{eventID}/', [App\Http\Controllers\EventsController::class, 'classesList'])->name('events.classes');
+Route::get('/eliminators/{eventID}/bracket', [App\Http\Controllers\EventsController::class, 'bracketTest'])->name('bracket.test');
 Route::get('/eliminators/{eventID}/{classID}/bracket', [App\Http\Controllers\EventsController::class, 'bracket'])->name('bracket');
 
 Route::get('/dashboard', function () {

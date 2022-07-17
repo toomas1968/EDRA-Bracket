@@ -29,32 +29,18 @@ class EntriesList {
         get('http://localhost/api/results', { eventID: this.eventID, classID: this.classID})
 
             .then(data => {
-                console.log(data)
                 for(let driver of data.data) {
-                    // if(driver.ring_round == 0) {
-                    //     let newEntryElement = document.createElement("div");
-                    //     newEntryElement.className = CLASS_EL_ROW;
-                    //     // Add name to newEntryElement
-                    //     let newEntryElementName = document.createElement("div");
-                    //     newEntryElementName.innerText = "Driver: " + driver.racer;
-                    //     newEntryElementName.className = CLASS_EL_NAME + " " + CLASS_VERDANA_GRAY;
-                    //     newEntryElement.appendChild(newEntryElementName);
-
-                    //     // Add newEntryElement to EntryListElement
-                    //     _E_List_Element.appendChild(newEntryElement);
-                    // }
-                    
-        
                     this.Entries.push(driver);
-
                 }
+
                 for(let classes of data.classes) {
                     let newEntryElement = document.createElement("div");
                     newEntryElement.className = CLASS_EL_ROW;
                     // Add name to newEntryElement
-                    let newEntryElementName = document.createElement("div");
+                    let newEntryElementName = document.createElement("a");
                     newEntryElementName.innerText = "Class: " + classes.className;
                     newEntryElementName.className = CLASS_EL_NAME + " " + CLASS_VERDANA_GRAY;
+                    newEntryElementName.href = route('bracket', [ data.eventID, classes.classID]);
                     newEntryElement.appendChild(newEntryElementName);
 
                     // Add newEntryElement to EntryListElement
