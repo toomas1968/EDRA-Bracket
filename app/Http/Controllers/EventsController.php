@@ -10,33 +10,30 @@ use DB;
 
 class EventsController extends Controller
 {
-    public function index() {
-
+    public function index() 
+    {
         $events = Events::orderBy('isActive', 'desc')->get();
-
-
-        //$event = Events::where('eventId', $eventId)->first();
-
+        
         return view('events.index')->with('events', $events);
-
     }
 
-    public function create() {
+    public function create() 
+    {
         return view('create');
     }
 
-    public function classesList($eventId) {
-
+    public function classesList($eventId) 
+    {
         $event = Events::where('eventId', $eventId)->first();
         $tournamentRacingResults = TournamentRacingResults::where('eventID', $eventId)->pluck('classID')->all();
         $carCategories = Classes::whereIn('classId', $tournamentRacingResults)->get();
 
         return view('classes.index')->with('event', $event)->with('carCategories', $carCategories);
-
     }
 
 
-    public function bracketTest($eventID) {
+    public function bracketTest($eventID) 
+    {
         $event = Events::where('eventId', $eventID)->first();
         $tournamentRacingResults = TournamentRacingResults::where('eventID', $eventID)->pluck('classID')->all();
         $classID = Classes::whereIn('classId', $tournamentRacingResults)->first();
@@ -44,7 +41,8 @@ class EventsController extends Controller
         return view('bracket.index')->with('eventID', $eventID)->with('classID', $classID->classID);
     }
 
-    public function bracket($eventID, $classID) {
+    public function bracket($eventID, $classID) 
+    {
         return view('bracket.index')->with('eventID', $eventID)->with('classID', $classID);
     }
 

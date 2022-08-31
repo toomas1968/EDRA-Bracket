@@ -1,10 +1,5 @@
 <x-app-layout>
     <div class="py-12">
-
-        <div id="wrapper-header-bracket" class="bg-light-gray rounded verdana-gray header">
-            <div>Tournament Bracket Maker</div>
-        </div>
-
         <div id="wrapper-content-bracket">            
             <div id="content">
                 <div id="content-left-pane" class="rounded bg-light-gray">

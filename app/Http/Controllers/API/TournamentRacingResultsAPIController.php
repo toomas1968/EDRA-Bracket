@@ -26,18 +26,15 @@ class TournamentRacingResultsAPIController extends Controller
             $event = Events::where('eventId', $request->eventID)->first();
             $tournamentRacingResults = TournamentRacingResults::where('eventID', $request->eventID)->pluck('classID')->all();
             $carCategories = Classes::whereIn('classId', $tournamentRacingResults)->get();
-            
 
         } catch (QueryException $e) {
             return $this->respondInvalidQuery();
         }
 
-        //return ['data' => $results, 'test' => 'test'];
         return response()->json([
             "data" => $results,
             "classes" => $carCategories,
             "eventID" => $event->eventID
         ]);
-        //dd($results);
     }
 }

@@ -125,6 +125,7 @@
     flex-direction: row;
     align-content: space-between;
     border: 2px solid #8d8d8d;
+    border-radius: 7px;
     padding: 10px;
     position: relative;
 }
@@ -134,7 +135,7 @@
 }
 
 
-.be-row .be1::after {
+.be-row .beFirstColumn::after {
     align-items: center ;
     content: '';
     display: flex ;
@@ -145,6 +146,7 @@
     height: 5rem;
     border-top: 1px solid red;
     border-right: 1px solid red;
+    border-top-right-radius: 15px;
     position: absolute;
 }
 
@@ -159,6 +161,7 @@
     height: 13rem;
     border-top: 1px solid red;
     border-right: 1px solid red;
+    border-top-right-radius: 15px;
     position: absolute;
 }
 
@@ -173,6 +176,7 @@
     height: 28rem;
     border-top: 1px solid red;
     border-right: 1px solid red;
+    border-top-right-radius: 15px;
     position: absolute;
 }
 
@@ -187,6 +191,7 @@
     height: 58rem;
     border-top: 1px solid red;
     border-right: 1px solid red;
+    border-top-right-radius: 15px;
     position: absolute;
 }
 
@@ -201,6 +206,7 @@
     height: 72vh;
     border-top: 1px solid red;
     border-right: 1px solid red;
+    border-top-right-radius: 15px;
     position: absolute;
 }
 
@@ -215,6 +221,7 @@
     height: 100%;
     border-bottom: 1px solid red;
     border-right: 1px solid red;
+    border-bottom-right-radius: 15px;
     position: absolute;
 }
 
